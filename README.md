@@ -22,7 +22,7 @@ In order to achieve robust hand detection, we first need to identify the hand be
 
 From here, we will use the [Kaggle ASL](https://www.kaggle.com/grassknoted/asl-alphabet?select=asl_alphabet_train) dataset to train a convolutional neural network to classify the refined hand image and predict which symbol is being made to be displayed for the user.
 
-## Results/Discussion
+## Results
 
 The classification of several different input images of people displaying ASL letters will serve as the supervised learning part of the project. The first step would be to ensure that we are correctly able to identify the features in images that correspond to a person’s hands. We then would want to measure the accuracy of our model’s recognition of ASL letters with varying parameters such as the race of the person in the input image, the size of the person’s hands, and various nuances in the angling of the person’s hands. 
 
