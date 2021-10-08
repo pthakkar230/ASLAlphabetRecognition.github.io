@@ -1,4 +1,4 @@
-# ASL Alphabet Recognition 
+# ASL Alphabet Recognition Proposal
 
 ## Introduction/Background
 
