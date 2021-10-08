@@ -18,7 +18,7 @@ Users will provide input from a camera source, which our program will use to ext
 
 <img src="assets\haar cascade.png" height="500px">
 
-In order to achieve robust hand detection, we first need to identify the hand being manipulated within the frame and use image processing to generate a cleaner image. For this we will use a supervised learning method known as the Haar Cascade model to identify and extract portions of input frames with hands.
+In order to achieve robust hand detection, we first need to identify the hand being manipulated within the frame and use image processing to generate a cleaner image. For this we will use a supervised learning method known as the Haar Cascade model to identify and extract portions of input frames with hands. The above image depicts it being used for facial recognition, but it can be applied with other body parts as well.
 
 From here, we will use the [Kaggle ASL](https://www.kaggle.com/grassknoted/asl-alphabet?select=asl_alphabet_train) dataset to train a convolutional neural network to classify the refined hand image and predict which symbol is being made to be displayed for the user.
 
