@@ -40,6 +40,9 @@ The size of our dataset and the diversity of physical features in the images is 
 * Nov 15 - 26: Implement ASL Classification Model
 * Nov 26 - Dec 7: Complete Final Report
 
+### Major Checkpoint
+Provide proof of using supervised learning method, Haar Cascade model, in order to isolate hands in images for better classification for later parts of the project. This will be show on the due date of the midpoint report on November 12.
+
 
 ## Responsibilities
 * Parth Thakkar: Research and Implement Haar Cascade Model 
