@@ -32,7 +32,12 @@ Based on our initial testing accuracy obtained by training our model with the da
 Discussion
 The size of our dataset and the diversity of physical features in the images is important to use our model on a widespread basis. Machine learning models are prone to inherent biases based on the demographics of the team and the datasets, and we must be careful to identify these biases and expulge them. By doing so, we can ensure that we can identify and classify a person’s hands with varying factors in the input image. The research we perform to obtain an accurate model can lead to a promising feature allowing people to learn the ASL alphabet.
 
+## Citations
+
 American Sign Language. (2019, May 8). NIDCD. https://www.nidcd.nih.gov/health/american-sign-language
+
 Clason, D. (2021, August 31). Why you should learn sign language. Healthy Hearing. https://www.healthyhearing.com/report/52606-Why-you-should-learn-sign-language-in-the-new-year
+
 Pigou, L. (2014, September 6). Sign Language Recognition Using Convolutional Neural Networks. SpringerLink. https://link.springer.com/chapter/10.1007/978-3-319-16178-5_40?error=cookies_not_supported&code=e6aaf75c-8a07-4d38-a007-840ae4810558
+
 Sinha, A. (2021, March 15). How To Detect and Extract Faces from an Image with OpenCV and Python. DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-detect-and-extract-faces-from-an-image-with-opencv-and-python
