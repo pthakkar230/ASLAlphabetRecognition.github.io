@@ -2,7 +2,7 @@
 
 ## Introduction/Background
 
-<img src="assets\asl_diagram.png" height="500px">
+<img src="assets\asl diagram.png" height="500px">
 
 American sign language is the primary method of communication between North Americans who are deaf or hard of hearing and the people around them. It is the 5th most common language in the United States. It is recommended that children born with conditions that affect their hearing be exposed to language as soon as possible. This requires that the affected children and their families learn the language as well. In addition, there is a need for those in the service industry such as educators, first responders, and caregivers to know this language as well. The most obvious point to start this process as with any person learning a new language is to understand the letters of the alphabet and how to spell common words.
 
@@ -16,7 +16,7 @@ The symbolic differences in the ASL alphabet can be difficult to distinguish bet
 
 Users will provide input from a camera source, which our program will use to extract relevant features.
 
-<img src="assets\haar_cascade.png" height="500px">
+<img src="assets\haar cascade.png" height="500px">
 
 In order to achieve robust hand detection, we first need to identify the hand being manipulated within the frame and use image processing to generate a cleaner image. For this we will use a supervised learning method known as the Haar Cascade model to identify and extract portions of input frames with hands.
 
