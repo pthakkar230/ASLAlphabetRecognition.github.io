@@ -29,8 +29,25 @@ The classification of several different input images of people displaying ASL le
 Based on our initial testing accuracy obtained by training our model with the datasets we have identified, we might choose to expand our dataset in order to account for these varying conditions.
 
 
-Discussion
+## Discussion
 The size of our dataset and the diversity of physical features in the images is important to use our model on a widespread basis. Machine learning models are prone to inherent biases based on the demographics of the team and the datasets, and we must be careful to identify these biases and expulge them. By doing so, we can ensure that we can identify and classify a person’s hands with varying factors in the input image. The research we perform to obtain an accurate model can lead to a promising feature allowing people to learn the ASL alphabet.
+
+## Timeline
+* Oct 11 - 15: Data Collection and Preprocessing
+* Oct 18 - 29: Implement Haar Cascade Model
+* Nov 1 - 5: Measure Accuracy of Hand Detection
+* Nov 8 - 12: Complete Midpoint Report
+* Nov 15 - 26: Implement ASL Classification Model
+* Nov 26 - Dec 7: Complete Final Report
+
+
+## Responsibilities
+* Parth Thakkar: Research and Implement Haar Cascade Model 
+* Benjamin Wolfson: Research and Implement ASL Classifier
+* Sarthak Navjivan: Bridge Haar Cascade Model and ASL Classifer
+* Justin Kavalan: Bridge Haar Cascade Model and ASL Classifer
+* Jared Carbone: Collect and Adjust Datasets in Response to Results of Implementation
+
 
 ## Citations
 
