@@ -1,4 +1,4 @@
-# [ASL Alphabet Recognition Proposal](https://pthakkar230.github.io/ASLAlphabetRecognition.github.io/) 
+# [ASL Alphabet Recognition Midpoint](https://pthakkar230.github.io/ASLAlphabetRecognition.github.io/) 
 
 
 ## Introduction/Background
