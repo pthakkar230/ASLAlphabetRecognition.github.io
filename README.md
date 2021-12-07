@@ -1,8 +1,7 @@
-# [ASL Alphabet Recognition Proposal](https://pthakkar230.github.io/ASLAlphabetRecognition.github.io/) 
+# [ASL Alphabet Recognition Midpoint](https://pthakkar230.github.io/ASLAlphabetRecognition.github.io/) 
+
 
 ## Introduction/Background
-
-<img src="assets\asl diagram.png" height="500px">
 
 American sign language is the primary method of communication between North Americans who are deaf or hard of hearing and the people around them. It is the 5th most common language in the United States. It is recommended that children born with conditions that affect their hearing be exposed to language as soon as possible. This requires that the affected children and their families learn the language as well. In addition, there is a need for those in the service industry such as educators, first responders, and caregivers to know this language as well. The most obvious point to start this process as with any person learning a new language is to understand the letters of the alphabet and how to spell common words.
 
@@ -12,52 +11,55 @@ There are a breadth of datasets that can be used to classify hand gestures as a 
 
 The symbolic differences in the ASL alphabet can be difficult to distinguish between, particularly for beginners. We hope to enhance the speed and accuracy of the learning process by developing a program that generates real-time analysis of hand gestures, providing users with crucial feedback to augment their experience. We also hope that this project can be used for ASL speakers to communicate with those who are not familiar with the alphabet.
 
+## Data Collection
+
+XML-based hand detection models were downloaded from various sources on the internet. This is the chosen format for OpenCV haar cascades. We have several models for different hand views (palm, fist, side, etc.) For the next phase of the project we will explore creating our own XML models.
+
+We recorded our own samples as well as used a Kaggle hand dataset in order to complete our data. The hand dataset from Kaggle has a total of 13050 hand instances with annotations attached to each image. Any hand that exceeds the threshold of 100 x 100 pixels in a box shape are detected as hands and are used for evaluation. The dataset claims to have collected data with no bias for the visibility of people, environment, or any other constraint of type of image as long as a person was present. The annotations come in the form of a bounding rectangle on qualifying image, and it is not required to be axis dependent, or have to be oriented with respect to a wrist. 
+
 ## Methods
 
-Users will provide input from a camera source, which our program will use to extract relevant features.
+### Object Detection + Image Preprocessing
 
-<img src="assets\haar cascade.png" height="500px">
+As outlined in our initial project debrief, the general framework for our system depends on robust hand detection. We have chosen to use the Haar Cascade model to identify and extract portions of input frames with hands to standardize and then feed into a convolutional neural net for classification.
 
-In order to achieve robust hand detection, we first need to identify the hand being manipulated within the frame and use image processing to generate a cleaner image. For this we will use a supervised learning method known as the Haar Cascade model to identify and extract portions of input frames with hands. The above image depicts it being used for facial recognition, but it can be applied with other body parts as well.
+### Classification
 
-From here, we will use the [Kaggle ASL](https://www.kaggle.com/grassknoted/asl-alphabet?select=asl_alphabet_train) dataset to train a convolutional neural network to classify the refined hand image and predict which symbol is being made to be displayed for the user.
+We also began work on our CNN model, using training data from our dataset. In the next phase of our project we will also begin feeding the output of the haar detection model into this CNN to build the full data pipeline from raw image to gesture recognition, but for now we stuck to using the existing labelled data so that classification and object detection could be worked on simultaneously. We are currently using an existing architecture, the MobileNet architecture, due to its lightweight size which allows us to train faster and produce better early-stage results.
 
-## Results
+### Word Spelling + Letter Stitching
 
-The classification of several different input images of people displaying ASL letters will serve as the supervised learning part of the project. The first step would be to ensure that we are correctly able to identify the features in images that correspond to a person’s hands. We then would want to measure the accuracy of our model’s recognition of ASL letters with varying parameters such as the race of the person in the input image, the size of the person’s hands, and various nuances in the angling of the person’s hands. 
+For the final phase of the project, we plan to implement live video feed logic to extract words on-the-fly as the user spells them out. This will not be covered in this midterm report.
 
-Based on our initial testing accuracy obtained by training our model with the datasets we have identified, we might choose to expand our dataset in order to account for these varying conditions.
+## Results and Discussion
+
+### Object Detection
+
+Hand detection presents significant challenges. The many distinct poses in ASL significantly distort the appearance of the hand, obstructing the view of fingers and other unique visual elements. Thus, it is crucial to have robust models for several key positions in the language. We have identified three to focus on for the scope of this project: palm, fist, and side.
+
+Unfortunately, the XML Haar Cascades models we found online are not very accurate at detecting these three broad categories. The closed fist is the easiest to identify, but also identifies significant amounts of various artifacts in test footage. The following images represent the sample space selected from a single frame:
+
+<img src="assets\image4.jpg" height="100px">
+<img src="assets\image5.jpg" height="100px">
+<img src="assets\image6.jpg" height="100px">
+<img src="assets\image8.jpg" height="100px">
+<img src="assets\image9.jpg" height="100px">
+
+This represents a best-case scenario, as the closed fist has shown to be the most consistently accurate model from our designated XMLs. Other models perform significantly worse, generating up to 2-3x the artifacts per frame.
+
+Going forward we will look into training our own XMLs for more robust detection across the three categories.
+
+### Image Preprocessing
+
+The haar-cascade model actually does most of the preprocessing of our data for us, as the algorithm includes edge and feature detection. Using a rough heuristic of bounding box size, we then eliminate obvious artifacts. It should be noted that this does not eliminate all artifacts. With the remaining detection boxes, we then crop and normalize to use as input for our classification algorithm.
+
+### Classification
+
+The classification task proved to be a bit more successful. Our results from our CNN after training for 2 epochs are as follows. 
+
+<img src="assets\image1.png" height="250px">
+<img src="assets\image7.png" height="250px">
+
+Our initial results are promising, with a peak validation accuracy of 75%. As you can see from the decrease in validation accuracy with a corresponding increase in training accuracy, our CNN model currently suffers badly from overfitting. The same trend is observed in our cross-entropy loss, with loss decreasing on the training data but increasing in our validation set. This can be addressed by introducing regularization and dropout layers, both of which we plan on experimenting with in the next stage of our project. We also would like to train for more epochs once we address overfitting. We also plan on experimenting with our own architectures other than the MobileNet using a combination of densely connected, convolution, drop out, and batch normalization layers.
 
 
-## Discussion
-The size of our dataset and the diversity of physical features in the images is important to use our model on a widespread basis. Machine learning models are prone to inherent biases based on the demographics of the team and the datasets, and we must be careful to identify these biases and expulge them. By doing so, we can ensure that we can identify and classify a person’s hands with varying factors in the input image. The research we perform to obtain an accurate model can lead to a promising feature allowing people to learn the ASL alphabet.
-
-## Timeline
-* Oct 11 - 15: Data Collection and Preprocessing
-* Oct 18 - 29: Implement Haar Cascade Model
-* Nov 1 - 5: Measure Accuracy of Hand Detection
-* Nov 8 - 12: Complete Midpoint Report
-* Nov 15 - 26: Implement ASL Classification Model
-* Nov 26 - Dec 7: Complete Final Report
-
-### Major Checkpoint
-Provide proof of using supervised learning method, Haar Cascade model, in order to isolate hands in images for better classification for later parts of the project. This will be show on the due date of the midpoint report on November 12.
-
-
-## Responsibilities
-* Parth Thakkar: Research and Implement Haar Cascade Model 
-* Benjamin Wolfson: Research and Implement ASL Classifier
-* Sarthak Navjivan: Bridge Haar Cascade Model and ASL Classifer
-* Justin Kavalan: Bridge Haar Cascade Model and ASL Classifer
-* Jared Carbone: Collect and Adjust Datasets in Response to Results of Implementation
-
-
-## Citations
-
-American Sign Language. (2019, May 8). NIDCD. https://www.nidcd.nih.gov/health/american-sign-language
-
-Clason, D. (2021, August 31). Why you should learn sign language. Healthy Hearing. https://www.healthyhearing.com/report/52606-Why-you-should-learn-sign-language-in-the-new-year
-
-Pigou, L. (2014, September 6). Sign Language Recognition Using Convolutional Neural Networks. SpringerLink. https://link.springer.com/chapter/10.1007/978-3-319-16178-5_40?error=cookies_not_supported&code=e6aaf75c-8a07-4d38-a007-840ae4810558
-
-Sinha, A. (2021, March 15). How To Detect and Extract Faces from an Image with OpenCV and Python. DigitalOcean. https://www.digitalocean.com/community/tutorials/how-to-detect-and-extract-faces-from-an-image-with-opencv-and-python
