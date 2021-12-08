@@ -89,17 +89,17 @@ Using a rough heuristic of the bounding box for the detected hand in the frame, 
 #### Classification
 As mentioned in the methods section, our results with the other architectures were unusable. Here is the following result for ResNet50:
 
-<img src="assets\final5.png" height="250px">
+<img src="assets\final5.png" height="500px">
 
 As you can see, the peak validation accuracy of ResNet50 with default parameters was about 20%. While it is important to note that while the hyperparameters were not tuned, this stood in stark comparison to our alternative architecture MobileNet with default parameters. In addition, one forward pass through ResNet50 took about 5 seconds on our computers, which was unacceptable for a real-time application. For these reasons, we decided not to pursue experimentation down this path, either through tuning hyperparameters to increase accuracy, or using a smaller version of the model (such as the 19 or 34 layer versions) to increase performance.
 
 However, our initial results with MobileNet were promising, with an initial validation accuracy of around 70%.
 
-<img src="assets\final6.png" height="250px">
+<img src="assets\final6.png" height="500px">
 
 Initially, we thought the decrease in validation accuracy with a corresponding increase in training accuracy was an indication of overfitting. However, upon running for more epochs, this trend was not observed, and our initial results must have been an anomaly. 
 
-<img src="assets\final7.png" height="250px">
+<img src="assets\final7.png" height="500px">
 
 Therefore, we focused on tuning hyperparameters. We found our model performed best when we changed our initial learning rate from the default of .005 to .05.
 
@@ -116,7 +116,7 @@ We also were able to get better results when dropout layers were introduced with
 
 When we attempted to connect the parts of our pipeline together, we saw a significant drop in classification accuracy. While we initially expected a drop in accuracy because of the cleanliness of our data (which was shot with a blank background) and our webcam footage, we noted that a large drop in classification accuracy occurred when we had to downgrade our tensorflow version from 2.0 to 1.0. We were unable to increase our validation accuracy past 30% despite having the exact same architecture and being trained on the exact same data. 
 
-<img src="assets\finalC.png" height="250px">
+<img src="assets\finalC.png" height="500px">
 
 ### Conclusion
 
