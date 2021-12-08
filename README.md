@@ -122,11 +122,11 @@ When we attempted to connect the parts of our pipeline together, we saw a signif
 
 Our final pipeline does demonstrate significant difficulty and has a heavy bias towards certain letters. For example, letters ‘a’, ‘b’, and ‘w’ are detected without significant issue, but oftentimes other letters symbols will be conflated with those symbols, e.g. other fist based symbols such as ‘s’ or ‘t’ are detected as ‘a’.
 
-<img src="assets\finalD.png" height="250px">
+<img src="assets\finalD.png" height="75px">
 
 The pipeline has much room to improve, and our initial project idea was very ambitious. In addition to the errors in classification, there is also some difficulty with hand detection. The model often does not detect the hand despite being very visible in the frame, and other times the bounding box often cuts out crucial parts of the hand. This makes the classification of certain symbols like ‘d’ very difficult, where the finger is often cut out of the frame and the classification model doesn’t have access to crucial features to detect the symbol as a ‘d’.
 
-<img src="assets\finalE.png" height="250px">
+<img src="assets\finalE.png" height="75px">
 
 To address these problems, if we had more time we could explore the use of masking techniques as a preprocessing step. This would allow for background noise to be removed entirely from the image, and would help us understand where our detection model thinks the hand is and why it would crop out certain important features.
 
