@@ -130,3 +130,17 @@ The pipeline has much room to improve, and our initial project idea was very amb
 
 To address these problems, if we had more time we could explore the use of masking techniques as a preprocessing step. This would allow for background noise to be removed entirely from the image, and would help us understand where our detection model thinks the hand is and why it would crop out certain important features.
 
+
+###References
+
+Bambach, S., Lee, S., Crandall, D. J., & Yu, C. (2015). Lending a hand: Detecting hands and recognizing activities in complex egocentric interactions. 2015 IEEE International Conference on Computer Vision (ICCV). https://doi.org/10.1109/iccv.2015.226
+
+
+Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C.-Y., & Berg, A. C. (2016). SSD: Single shot multibox detector. Computer Vision – ECCV 2016, 21–37. https://doi.org/10.1007/978-3-319-46448-0_2
+
+
+Pytorch. PyTorch. (n.d.). Retrieved December 6, 2021, from https://pytorch.org/hub/pytorch_vision_resnet/. 
+
+
+Howard, A. G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T., Andreetto, M., & Adam, H. (2017). MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications. https://doi.org/arXiv:1704.04861 
+
