@@ -131,7 +131,7 @@ The pipeline has much room to improve, and our initial project idea was very amb
 To address these problems, if we had more time we could explore the use of masking techniques as a preprocessing step. This would allow for background noise to be removed entirely from the image, and would help us understand where our detection model thinks the hand is and why it would crop out certain important features.
 
 
-###References
+### References
 
 Bambach, S., Lee, S., Crandall, D. J., & Yu, C. (2015). Lending a hand: Detecting hands and recognizing activities in complex egocentric interactions. 2015 IEEE International Conference on Computer Vision (ICCV). https://doi.org/10.1109/iccv.2015.226
 
